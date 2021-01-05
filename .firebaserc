@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "projeto-tfc": {
+      "hosting": {
+        "ProjetoTFC": [
+          "projeto-tfc"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "projeto-tfc"
+  }
+}

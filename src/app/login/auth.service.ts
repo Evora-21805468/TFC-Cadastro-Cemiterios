@@ -29,4 +29,8 @@ export class AuthService {
       });
     }
   }
+
+  canAcessPage(): boolean{
+    return this.userAutenticado;
+  }
 }

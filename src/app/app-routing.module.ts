@@ -4,6 +4,7 @@ import {LoginComponent} from './login/login.component';
 import {MainComponent} from './layouts/main/main.component';
 import {NavbarComponent} from './layouts/navbar/navbar.component';
 import {AuthGuard} from './guards/auth.guard';
+import {RegistoComponent} from './registo/registo.component';
 
 // @ts-ignore
 
@@ -11,6 +12,10 @@ const routes: Routes = [
   {
     path: 'login',
     component:  LoginComponent
+  },
+  {
+    path: 'registo',
+    component:  RegistoComponent
   },
   {
     path: '',

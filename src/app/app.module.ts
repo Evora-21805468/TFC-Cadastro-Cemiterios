@@ -12,6 +12,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from '../environments/environment';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { RegistoComponent } from './registo/registo.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { AngularFirestore } from '@angular/fire/firestore';
     MainComponent,
     NavbarComponent,
     FooterComponent,
-    LoginComponent
+    LoginComponent,
+    RegistoComponent
   ],
   imports: [
     BrowserModule,

@@ -1,1 +1,41 @@
-<p>registo works!</p>
+<form [formGroup]="registoForm" (ngSubmit)="registo()">
+
+  <div>
+    <label for="firstName">
+      Primeiro Nome
+    </label>
+    <input id="firstName" type="text" formControlName="firstName">
+  </div>
+
+  <div *ngIf="this.registoForm.controls['firstName'].invalid && (this.registoForm.controls['firstName'].dirty || this.registoForm.controls['firstName'].touched)"  class="alert alert-danger">Primeiro Nome Obrigatório</div>
+
+  <div>
+    <label for="lastName">
+      Último Nome
+    </label>
+    <input id="lastName" type="text" formControlName="lastName">
+  </div>
+
+  <div>
+    <label for="email">
+      E-mail
+    </label>
+    <input id="email" type="text" formControlName="email">
+  </div>
+
+  <div>
+    <label for="password">
+      Password
+    </label>
+    <input id="password" type="password" formControlName="password">
+  </div>
+
+  <div>
+    <label for="confirmarPassword">
+      Confirmar Password
+    </label>
+    <input id="confirmarPassword" type="password" formControlName="confirmarPassword">
+  </div>
+
+  <button class="button" type="submit">Registar</button>
+</form>

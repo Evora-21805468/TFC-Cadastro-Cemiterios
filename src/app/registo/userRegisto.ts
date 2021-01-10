@@ -3,8 +3,6 @@ export interface IUserRegisto{
   password?: string;
   primeiroNome?: string;
   segundoNome?: string;
-  numeroTelemovel?: string;
-
 }
 
 export class UserRegisto implements  IUserRegisto{
@@ -12,8 +10,7 @@ export class UserRegisto implements  IUserRegisto{
     email?: string,
     password?: string,
     primeiroNome?: string,
-    segundoNome?: string,
-    numeroTelemovel?: string,
+    segundoNome?: string
   ) {
   }
 }

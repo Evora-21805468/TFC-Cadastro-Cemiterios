@@ -26,13 +26,10 @@ export class RegistoComponent implements OnInit {
 
   private createForm() {
     this.registoForm = new FormGroup({
-      firstName: new FormControl('', [Validators.required, Validators.maxLength(2)]),
-      lastName: new FormControl('', [Validators.required, Validators.maxLength(20)]),
+      name: new FormControl('', [Validators.required, Validators.maxLength(2)]),
       email: new FormControl('', [Validators.required]),
       password: new FormControl('', [Validators.required]),
       confirmarPassword: new FormControl('', [Validators.required]),
-
-
     });
   }
 
@@ -41,8 +38,6 @@ export class RegistoComponent implements OnInit {
   }
 
   registo():void{
-    console.log(this.registoForm.controls['firstName'].value)
-    console.log(this.registoForm.controls['lastName'].value)
     console.log(this.registoForm.controls['email'].value)
     console.log(this.registoForm.controls['password'].value)
     console.log(this.registoForm.controls['confirmarPassword'].value)

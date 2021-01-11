@@ -1,41 +1,37 @@
-<form [formGroup]="registoForm" (ngSubmit)="registo()">
-
-  <div>
-    <label for="firstName">
-      Primeiro Nome
-    </label>
-    <input id="firstName" type="text" formControlName="firstName">
+<div class="container-fluid">
+  <div class="row main-content bg-success text-center">
+    <div class="col-md-4 text-center company__info">
+      <img src="./assets/images/logo_cemiterios_dark.png" alt="logo cemiterio" class="center" width="200" height="200">
+      <h4 class="company_title">Cemitério Dos Prazeres Maçonaria</h4>
+    </div>
+    <div class="col-md-8 col-xs-12 col-sm-12 login_form ">
+      <div class="container-fluid">
+        <div class="row">
+          <form [formGroup]="registoForm" class="form-group">
+            <div class="row">
+              <h2 class = "center">Login</h2>
+            </div>
+            <div class="row">
+              <hr>
+            </div>
+            <div class="row">
+              <h3>Bem-Vindo! Aqui poderá consultar várias informações sobre a maçonaria do cemitério dos prazeres</h3>
+            </div>
+            <div class="row">
+              <input [(ngModel)]="registoForm.controls['name']" type="text" name="firstName" id="firstName" class="form__input" placeholder="Nome">
+            </div>
+            <div class="row">
+              <input [(ngModel)]="registoForm.controls['firstName']"  type="password" name="password" id="password" class="form__input" placeholder="Password">
+            </div>
+          </form>
+        </div>
+        <div class="row">
+          <a class="btn center" (click)="registo()">Iniciar Sessão</a>
+        </div>
+        <div class="row">
+          <p class="center">Ainda não tem uma conta? <a routerLink="/registo">Registar</a></p>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div *ngIf="this.registoForm.controls['firstName'].invalid && (this.registoForm.controls['firstName'].dirty || this.registoForm.controls['firstName'].touched)"  class="alert alert-danger">Primeiro Nome Obrigatório</div>
-
-  <div>
-    <label for="lastName">
-      Último Nome
-    </label>
-    <input id="lastName" type="text" formControlName="lastName">
-  </div>
-
-  <div>
-    <label for="email">
-      E-mail
-    </label>
-    <input id="email" type="text" formControlName="email">
-  </div>
-
-  <div>
-    <label for="password">
-      Password
-    </label>
-    <input id="password" type="password" formControlName="password">
-  </div>
-
-  <div>
-    <label for="confirmarPassword">
-      Confirmar Password
-    </label>
-    <input id="confirmarPassword" type="password" formControlName="confirmarPassword">
-  </div>
-
-  <button class="button" type="submit">Registar</button>
-</form>
+</div>

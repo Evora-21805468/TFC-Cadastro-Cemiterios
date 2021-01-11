@@ -27,12 +27,15 @@
               <input [(ngModel)]="user.password"  type="password" name="password" id="password" class="form__input" placeholder="Password">
             </div>
             <div class="row">
-              <input [(ngModel)]="confirmarPassword"  type="password" name="confirmarPassword" id="confirmarPassword" class="form__input" placeholder="Confirmar Passoword">
+              <input [(ngModel)]="user.confirmarPassword"  type="password" name="confirmarPassword" id="confirmarPassword" class="form__input" placeholder="Confirmar Passoword">
             </div>
           </form>
         </div>
+        <div class="row center">
+          <h4 *ngIf="this.existeErro">{{this.erro}}</h4>
+        </div>
         <div class="row">
-          <a class="btn center" (click)="this.registo()">Registar</a>
+          <a class="btn center" (click)="this.confirmarCampos()">Registar</a>
         </div>
       </div>
     </div>

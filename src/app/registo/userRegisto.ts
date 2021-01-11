@@ -1,6 +1,7 @@
 export interface IUserRegisto{
   email?: string;
   password?: string;
+  confirmarPassword?: string;
   nome?: string;
   isAdmin?: boolean;
 }
@@ -11,7 +12,8 @@ export class UserRegisto implements  IUserRegisto{
     email?: string,
     password?: string,
     nome?: string,
-    isAdmin?: boolean
+    isAdmin?: boolean,
+    confirmarPassword?: string
   ) {
   }
 }

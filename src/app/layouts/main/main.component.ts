@@ -12,7 +12,11 @@ export class MainComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    firebase.initializeApp(environment.firebaseConfig );
+    if(firebase.apps.length === 0){
+      // @ts-ignore
+      firebase.initializeApp(environment.firebaseConfig );
+    }
+
   }
 
 }

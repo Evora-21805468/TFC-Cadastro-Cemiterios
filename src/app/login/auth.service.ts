@@ -30,6 +30,10 @@ export class AuthService {
     }
   }
 
+  setAcessPage(bool: boolean){
+    this.userAutenticado = bool;
+  }
+
   canAcessPage(): boolean{
     return this.userAutenticado;
   }

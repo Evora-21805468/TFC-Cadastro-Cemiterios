@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
+import {IUserRegisto, UserRegisto} from './userRegisto';
+import {IUser, User} from '../login/user';
 
 @Component({
   selector: 'app-registo',
@@ -9,10 +11,9 @@ import {Router} from '@angular/router';
 })
 export class RegistoComponent implements OnInit {
 
-  // @ts-ignore
-  registoForm: FormGroup;
-  // @ts-ignore
-  isSaving: boolean;
+
+  user: IUserRegisto = new UserRegisto();
+  confirmarPassword = "";
 
   constructor(
     private formBuilder: FormBuilder,
@@ -20,27 +21,17 @@ export class RegistoComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.createForm();
 
   }
 
-  private createForm() {
-    this.registoForm = new FormGroup({
-      name: new FormControl('', [Validators.required, Validators.maxLength(2)]),
-      email: new FormControl('', [Validators.required]),
-      password: new FormControl('', [Validators.required]),
-      confirmarPassword: new FormControl('', [Validators.required]),
-    });
-  }
+
 
   onSubmit():void{
 
   }
 
   registo():void{
-    console.log(this.registoForm.controls['email'].value)
-    console.log(this.registoForm.controls['password'].value)
-    console.log(this.registoForm.controls['confirmarPassword'].value)
+
   }
 
 }

@@ -7,9 +7,9 @@
     <div class="col-md-8 col-xs-12 col-sm-12 login_form ">
       <div class="container-fluid">
         <div class="row">
-          <form [formGroup]="registoForm" class="form-group">
+          <form  class="form-group">
             <div class="row">
-              <h2 class = "center">Login</h2>
+              <h2 class = "center">Registo</h2>
             </div>
             <div class="row">
               <hr>
@@ -18,18 +18,21 @@
               <h3>Bem-Vindo! Aqui poderá consultar várias informações sobre a maçonaria do cemitério dos prazeres</h3>
             </div>
             <div class="row">
-              <input [(ngModel)]="registoForm.controls['name']" type="text" name="firstName" id="firstName" class="form__input" placeholder="Nome">
+              <input [(ngModel)]="user.nome" type="text" name="firstName" id="firstName" class="form__input" placeholder="Nome">
             </div>
             <div class="row">
-              <input [(ngModel)]="registoForm.controls['firstName']"  type="password" name="password" id="password" class="form__input" placeholder="Password">
+              <input [(ngModel)]="user.email"  type="text" name="email" id="email" class="form__input" placeholder="E-mail">
+            </div>
+            <div class="row">
+              <input [(ngModel)]="user.password"  type="password" name="password" id="password" class="form__input" placeholder="Password">
+            </div>
+            <div class="row">
+              <input [(ngModel)]="confirmarPassword"  type="password" name="confirmarPassword" id="confirmarPassword" class="form__input" placeholder="Confirmar Passoword">
             </div>
           </form>
         </div>
         <div class="row">
-          <a class="btn center" (click)="registo()">Iniciar Sessão</a>
-        </div>
-        <div class="row">
-          <p class="center">Ainda não tem uma conta? <a routerLink="/registo">Registar</a></p>
+          <a class="btn center" (click)="this.registo()">Registar</a>
         </div>
       </div>
     </div>

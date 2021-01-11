@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
+import {IUserRegisto, UserRegisto} from './userRegisto';
+import firebase from 'firebase';
 
 @Component({
   selector: 'app-registo',
@@ -19,15 +21,15 @@ export class RegistoComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.createForm();
 
   }
 
 
 
   registoStore() : void {
-    if (this.registoForm.controls['email'].value != null && this.registoForm.controls['password'].value != null) {
-      firebase.auth().createUserWithEmailAndPassword(this.registoForm.controls['email'].value, this.registoForm.controls['password'].value)
+
+    if (this.user.email != null && this.user.password != null) {
+      firebase.auth().createUserWithEmailAndPassword(this.user.email, this.user.password)
         .then((user) => {
 
         })

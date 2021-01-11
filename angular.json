@@ -132,5 +132,8 @@
       }
     }
   },
-  "defaultProject": "ProjetoTFC"
+  "defaultProject": "ProjetoTFC",
+  "cli": {
+    "analytics": "bf46a5e1-e0b0-4245-b646-0e815b76c684"
+  }
 }

@@ -6,6 +6,7 @@ export interface IUserRegisto{
 }
 
 export class UserRegisto implements  IUserRegisto{
+
   constructor(
     email?: string,
     password?: string,

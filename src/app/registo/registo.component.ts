@@ -8,6 +8,7 @@ import {AuthService} from '../login/auth.service';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {AngularFireDatabase} from '@angular/fire/database';
 import {AngularFireAuth} from '@angular/fire/auth';
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-registo',
@@ -29,7 +30,10 @@ export class RegistoComponent implements OnInit {
     public af: AngularFirestore, public db: AngularFireDatabase, public angularAuth: AngularFireAuth
   ) { }
 
+  public items: Observable<any[]> | undefined;
   ngOnInit() {
+      this.items = this.af.collection('users').valueChanges();
+      console.log( this.items);
 
   }
 
@@ -58,10 +62,8 @@ export class RegistoComponent implements OnInit {
 
     if (this.user.email != null && this.user.password != null) {
       firebase.auth().createUserWithEmailAndPassword(this.user.email, this.user.password)
-        .then((user) => {
-          this.userBD = user;
-          //this.addUserToDB();
-
+        .then((userThen) => {
+         this.addUserToDB()
           this.authService.setAcessPage(true);
           this.router.navigate(['/']);
 
@@ -75,11 +77,20 @@ export class RegistoComponent implements OnInit {
   }
 
   addUserToDB(){
-    const currentUser = firebase.auth().currentUser;
-    var database = firebase.database();
-    let userDB = new UserDB(this.userBD.user?.uid,this.user.email,this.user.nome,false);
-    this.af.collection("users").add(userDB)
 
+      var user1 = firebase.auth().currentUser;
+      if(user1 != null){
+        this.af.collection('users').doc(user1?.uid).set({
+          nome: this.user.nome,
+          email: this.user.email,
+          isAdmin: false,
+          uid: user1?.uid,
+        }).then(() => {
+          console.log("Document successfully written!");
+        }).catch((error) => {
+          console.error("Error writing document: ", error);
+        });
+      }
   }
 
   onSubmit():void{

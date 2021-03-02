@@ -5,17 +5,11 @@
     "indexes": "firestore.indexes.json"
   },
   "hosting": {
-    "public": "dist/ProjetoTFC",
+    "public": "dist",
     "ignore": [
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
-    ],
-    "rewrites": [
-      {
-        "source": "**",
-        "destination": "/index.html"
-      }
     ]
   },
   "storage": {

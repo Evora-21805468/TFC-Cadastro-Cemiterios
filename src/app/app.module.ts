@@ -11,7 +11,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from '../environments/environment';
-import { AngularFirestore } from '@angular/fire/firestore';
+import {AngularFirestore, AngularFirestoreModule} from '@angular/fire/firestore';
 import { RegistoComponent } from './registo/registo.component';
 
 
@@ -29,7 +29,8 @@ import { RegistoComponent } from './registo/registo.component';
         FormsModule,
         AngularFireModule.initializeApp(environment.firebaseConfig),
         AngularFireDatabaseModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        AngularFirestoreModule
     ],
   providers: [AuthService,AngularFirestore],
   bootstrap: [MainComponent]

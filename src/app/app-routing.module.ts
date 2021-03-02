@@ -5,6 +5,7 @@ import {MainComponent} from './layouts/main/main.component';
 import {NavbarComponent} from './layouts/navbar/navbar.component';
 import {AuthGuard} from './guards/auth.guard';
 import {RegistoComponent} from './registo/registo.component';
+import { ConsultarUsersComponent } from './consultarUsers/consultarUsers.component';
 
 // @ts-ignore
 
@@ -20,6 +21,11 @@ const routes: Routes = [
   {
     path: '',
     component: MainComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'consultarusers',
+    component: ConsultarUsersComponent,
     canActivate: [AuthGuard]
   }
 ];

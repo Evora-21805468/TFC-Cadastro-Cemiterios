@@ -1,10 +1,10 @@
 
-<nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark fixed-top" *ngIf="false">
+<nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark fixed-top" *ngIf="checkLogin()">
 
   <!-- Titulo na navbar e image -->
   <a class="navbar-brand titulo" [routerLink]="['/']">
     <img src="../../../assets/images/logo_cemiterios_dark.png" width="40" height="40" alt="Logo image">
-    Maçonaria Do Cemiério Dos Prazeres
+    Maçonaria
   </a>
 
   <!-- Botão para ecrans pequenos fazerem toggle -->
@@ -32,7 +32,14 @@
       <li class="nav-item active">
         <a class="nav-link" [routerLink]="['/']">
           <i class="fa fa-home"></i>
-          <span>Consultar</span>
+          <span>Consultar Maçonaria</span>
+        </a>
+      </li>
+
+      <li class="nav-item active">
+        <a class="nav-link" [routerLink]="['/consultarusers']">
+          <i class="fa fa-home"></i>
+          <span>Consultar Utilizadores</span>
         </a>
       </li>
 
@@ -50,18 +57,12 @@
         </a>
       </li>
 
-      <li class="nav-item active">
-        <a class="nav-link" [routerLink]="['/login']">
-          <i class="fa fa-home"></i>
-          <span>Login</span>
-        </a>
-      </li>
-
-
-
-
 
     </ul>
 
+  </div>
+
+  <div class="nav navbar-nav navbar-right">
+    <a href="" class="navbar-brand" (click)="bye()"><strong>Logout</strong></a>
   </div>
 </nav>

@@ -14,6 +14,10 @@ import { environment } from '../environments/environment';
 import {AngularFirestore, AngularFirestoreModule} from '@angular/fire/firestore';
 import { RegistoComponent } from './registo/registo.component';
 import {ConsultarUsersComponent} from "./consultarUsers/consultarUsers.component";
+import {ConsultarMonumentoComponent} from "./consultarMonumentos/consultarMonumento.component";
+import {HttpClientModule} from '@angular/common/http'
+import {HttpClient} from '@angular/common/http'
+import {RequestOptions, Request, RequestMethod, HttpModule} from '@angular/http';
 
 
 @NgModule({
@@ -23,7 +27,8 @@ import {ConsultarUsersComponent} from "./consultarUsers/consultarUsers.component
     FooterComponent,
     LoginComponent,
     RegistoComponent,
-    ConsultarUsersComponent
+    ConsultarUsersComponent,
+    ConsultarMonumentoComponent,
   ],
     imports: [
         BrowserModule,
@@ -32,7 +37,10 @@ import {ConsultarUsersComponent} from "./consultarUsers/consultarUsers.component
         AngularFireModule.initializeApp(environment.firebaseConfig),
         AngularFireDatabaseModule,
         ReactiveFormsModule,
-        AngularFirestoreModule
+        AngularFirestoreModule,
+        HttpClientModule,
+        HttpModule,
+
     ],
   providers: [AuthService,AngularFirestore],
   bootstrap: [MainComponent]

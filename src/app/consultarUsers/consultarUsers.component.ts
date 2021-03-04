@@ -53,6 +53,7 @@ export class ConsultarUsersComponent implements OnInit {
       isAdmin: !user.isAdmin,
       uid: user.uid,
         });
+
   }
 
 }

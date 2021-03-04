@@ -1,0 +1,32 @@
+<div id="content" class="ui container">
+<div class="panel-container">
+  <h2>
+    <span>Utilizadores:</span>
+  </h2>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="users?.length === 0">
+    <span>Sem Utilizadores Registados</span>
+  </div>
+
+  <div class="table-responsive" id="projectsTable" *ngIf="users.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+      <tr>
+        <th scope="col" ><span>Nome</span></th>
+        <th scope="col" ><span>E-mail</span></th>
+        <th scope="col" ><span>Administrador</span></th>
+        <th scope="col" ><span>Tornar Administrador</span></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.nome }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.isAdmin ? "SIM" : "NÃO" }}</td>
+        <td><button class="btn btn-warning" (click)="tornarAdmin(user)">Mudar Role</button></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>

@@ -38,28 +38,43 @@ export class ConsultarMonumentoComponent implements OnInit {
     let a = await this.getToken();
     // @ts-ignore
     this.token = a['access_token'];
-    console.log(this.token);
-    for(let i= 1; i < 10;i++){
+    for(let i= 1; i < 50;i++){
       let b = await this.getMonumentos(i);
       try{
         // @ts-ignore
         let id = b['feature']['attributes']['globalid'];
         // @ts-ignore
-        let numeroMonumento = b['feature']['attributes']['nome_do_monumento'];
+        let nome_do_monumento = b['feature']['attributes']['nome_do_monumento'];
         // @ts-ignore
         let rua = b['feature']['attributes']['rua'];
         // @ts-ignore
         let numeroRua = b['feature']['attributes']['numero_da_rua'];
-        var monumento: Monumento = new Monumento(id,numeroMonumento,rua,numeroRua);
-        console.log(monumento);
+        var monumento: Monumento = new Monumento(id,nome_do_monumento,rua,numeroRua);
         // @ts-ignore
         this.monumentos.push(monumento);
-
       }catch (ex){
 
       }
     }
-    console.log(this.monumentos);
+    //TODO confirmar numeros e assins
+    for(let i= 50; i < 200;i++){
+      let b = await this.getMonumentos(i);
+      try{
+        // @ts-ignore
+        let id = b['feature']['attributes']['globalid'];
+        // @ts-ignore
+        let nome_do_monumento = b['feature']['attributes']['nome_do_monumento'];
+        // @ts-ignore
+        let rua = b['feature']['attributes']['rua'];
+        // @ts-ignore
+        let numeroRua = b['feature']['attributes']['numero_da_rua'];
+        var monumento: Monumento = new Monumento(id,nome_do_monumento,rua,numeroRua);
+        // @ts-ignore
+        this.monumentos.push(monumento);
+      }catch (ex){
+
+      }
+    }
   }
 
 

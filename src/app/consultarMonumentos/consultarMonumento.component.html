@@ -12,16 +12,16 @@
       <table class="table table-striped" aria-describedby="page-heading">
         <thead>
         <tr>
+          <th scope="col" ><span>ID</span></th>
           <th scope="col" ><span>Nome</span></th>
-          <th scope="col" ><span>E-mail</span></th>
-          <th scope="col" ><span>Administrador</span></th>
-          <th scope="col" ><span>Tornar Administrador</span></th>
+          <th scope="col" ><span>Numero Rua</span></th>
+          <th scope="col" ><span>Rua</span></th>
         </tr>
         </thead>
         <tbody>
         <tr *ngFor="let monumento of monumentos">
           <td>{{ monumento._id }}</td>
-          <td>{{ monumento._numeroMonumento }}</td>
+          <td>{{ monumento._nomeMonumento }}</td>
           <td>{{ monumento._numeroRua }}</td>
           <td>{{ monumento._rua }}</td>
         </tr>

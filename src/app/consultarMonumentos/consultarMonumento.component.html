@@ -1,5 +1,32 @@
 <div id="content" class="ui container">
-  <h1>Ola Tyeste</h1>
-  <h1>{{token}}</h1>
-</div>
+  <div class="panel-container">
+    <h2>
+      <span>Utilizadores:</span>
+    </h2>
 
+    <div class="alert alert-warning" id="no-result" *ngIf="monumentos?.length === 0">
+      <span>A procurar na base de dados... Aguarde...</span>
+    </div>
+
+    <div class="table-responsive" id="projectsTable" *ngIf="monumentos.length > 0">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+        <tr>
+          <th scope="col" ><span>Nome</span></th>
+          <th scope="col" ><span>E-mail</span></th>
+          <th scope="col" ><span>Administrador</span></th>
+          <th scope="col" ><span>Tornar Administrador</span></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let monumento of monumentos">
+          <td>{{ monumento._id }}</td>
+          <td>{{ monumento._numeroMonumento }}</td>
+          <td>{{ monumento._numeroRua }}</td>
+          <td>{{ monumento._rua }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

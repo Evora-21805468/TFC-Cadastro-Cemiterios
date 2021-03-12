@@ -1,4 +1,5 @@
 <div id="content" class="ui container">
+  <ngx-spinner template="<img src='../assets/images/gif.gif'  />" ></ngx-spinner>
   <div class="panel-container">
     <h2>
       <span>Utilizadores:</span>
@@ -24,6 +25,12 @@
           <td>{{ monumento._nomeMonumento }}</td>
           <td>{{ monumento._numeroRua }}</td>
           <td>{{ monumento._rua }}</td>
+          <td>
+          <button type="submit" [routerLink]="[monumento._id, 'view']" class="btn btn-primary btn-sm">
+            <i class="fa fa-pencil"></i>
+            <span class="d-none d-md-inline">MAIS INFO</span>
+          </button>
+          </td>
         </tr>
         </tbody>
       </table>

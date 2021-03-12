@@ -18,6 +18,9 @@ import {ConsultarMonumentoComponent} from "./consultarMonumentos/consultarMonume
 import {HttpClientModule} from '@angular/common/http'
 import {HttpClient} from '@angular/common/http'
 import {RequestOptions, Request, RequestMethod, HttpModule} from '@angular/http';
+import {DetailConsultarMonumentoComponent} from "./consultarMonumentos/detailConsultarMonumento.component";
+import {NgxSpinnerModule} from "ngx-spinner";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 
 @NgModule({
@@ -29,6 +32,7 @@ import {RequestOptions, Request, RequestMethod, HttpModule} from '@angular/http'
     RegistoComponent,
     ConsultarUsersComponent,
     ConsultarMonumentoComponent,
+    DetailConsultarMonumentoComponent,
   ],
     imports: [
         BrowserModule,
@@ -40,6 +44,8 @@ import {RequestOptions, Request, RequestMethod, HttpModule} from '@angular/http'
         AngularFirestoreModule,
         HttpClientModule,
         HttpModule,
+        NgxSpinnerModule,
+      BrowserAnimationsModule
 
     ],
   providers: [AuthService,AngularFirestore],

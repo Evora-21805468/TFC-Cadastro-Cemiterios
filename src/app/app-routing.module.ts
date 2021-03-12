@@ -7,6 +7,7 @@ import {AuthGuard} from './guards/auth.guard';
 import {RegistoComponent} from './registo/registo.component';
 import { ConsultarUsersComponent } from './consultarUsers/consultarUsers.component';
 import {ConsultarMonumentoComponent} from "./consultarMonumentos/consultarMonumento.component";
+import {DetailConsultarMonumentoComponent} from "./consultarMonumentos/detailConsultarMonumento.component";
 
 // @ts-ignore
 
@@ -33,7 +34,11 @@ const routes: Routes = [
     path: 'consultarMonumento',
     component: ConsultarMonumentoComponent,
     canActivate: [AuthGuard]
-  }
+  },
+  {
+    path: 'consultarMonumento/:id/view',
+    component: DetailConsultarMonumentoComponent,
+  },
 ];
 
 @NgModule({

@@ -1,0 +1,29 @@
+<div id="content" class="ui container">
+  <ngx-spinner template="<img src='../assets/images/gif.gif'  />" ></ngx-spinner>
+  <div class="row justify-content-center panel-container">
+    <div class="col-8">
+      <div *ngIf="monumento">
+        <h2><span>Monumento:</span> {{ monumento._globalId }}</h2>
+        <hr>
+        <dl class="row-md entity-details">
+          <dt><span>ID</span></dt>
+          <dd>
+            <span>{{ monumento._id }}</span>
+          </dd>
+          <dt><span>Nome</span></dt>
+          <dd>
+            <span>{{ monumento._nomeMonumento  }}</span>
+          </dd>
+          <dt><span>Rua</span></dt>
+          <dd>
+            <span>{{ monumento._rua }}</span>
+          </dd>
+          <dt><span>Epitafios</span></dt>
+          <dd>
+            <span>{{ monumento._epitafios  }}</span>
+          </dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</div>

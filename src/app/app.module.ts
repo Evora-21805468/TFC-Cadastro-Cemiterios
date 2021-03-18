@@ -21,6 +21,8 @@ import {RequestOptions, Request, RequestMethod, HttpModule} from '@angular/http'
 import {DetailConsultarMonumentoComponent} from "./consultarMonumentos/detailConsultarMonumento.component";
 import {NgxSpinnerModule} from "ngx-spinner";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {MapComponent} from "./map/map.component";
+import {DashboardComponent} from "./dashboard/dashboard.component";
 
 
 @NgModule({
@@ -33,6 +35,8 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     ConsultarUsersComponent,
     ConsultarMonumentoComponent,
     DetailConsultarMonumentoComponent,
+    MapComponent,
+    DashboardComponent,
   ],
     imports: [
         BrowserModule,

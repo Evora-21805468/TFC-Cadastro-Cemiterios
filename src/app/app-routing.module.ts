@@ -8,6 +8,8 @@ import {RegistoComponent} from './registo/registo.component';
 import { ConsultarUsersComponent } from './consultarUsers/consultarUsers.component';
 import {ConsultarMonumentoComponent} from "./consultarMonumentos/consultarMonumento.component";
 import {DetailConsultarMonumentoComponent} from "./consultarMonumentos/detailConsultarMonumento.component";
+import {MapComponent} from "./map/map.component";
+import {DashboardComponent} from "./dashboard/dashboard.component";
 
 // @ts-ignore
 
@@ -38,6 +40,14 @@ const routes: Routes = [
   {
     path: 'consultarMonumento/:id/view',
     component: DetailConsultarMonumentoComponent,
+  },
+  {
+    path: 'map',
+    component: MapComponent,
+  },
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
   },
 ];
 

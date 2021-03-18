@@ -10,6 +10,7 @@ import {ConsultarMonumentoComponent} from "./consultarMonumentos/consultarMonume
 import {DetailConsultarMonumentoComponent} from "./consultarMonumentos/detailConsultarMonumento.component";
 import {MapComponent} from "./map/map.component";
 import {DashboardComponent} from "./dashboard/dashboard.component";
+import {TabelaComponent} from "./tabela/tabela.component";
 
 // @ts-ignore
 
@@ -40,14 +41,22 @@ const routes: Routes = [
   {
     path: 'consultarMonumento/:id/view',
     component: DetailConsultarMonumentoComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'map',
     component: MapComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'dashboard',
     component: DashboardComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'consultarTabela',
+    component: TabelaComponent,
+    canActivate: [AuthGuard]
   },
 ];
 

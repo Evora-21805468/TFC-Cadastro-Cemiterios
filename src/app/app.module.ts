@@ -23,6 +23,7 @@ import {NgxSpinnerModule} from "ngx-spinner";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MapComponent} from "./map/map.component";
 import {DashboardComponent} from "./dashboard/dashboard.component";
+import {TabelaComponent} from "./tabela/tabela.component";
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import {DashboardComponent} from "./dashboard/dashboard.component";
     DetailConsultarMonumentoComponent,
     MapComponent,
     DashboardComponent,
+    TabelaComponent,
   ],
     imports: [
         BrowserModule,

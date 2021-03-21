@@ -24,6 +24,8 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MapComponent} from "./map/map.component";
 import {DashboardComponent} from "./dashboard/dashboard.component";
 import {TabelaComponent} from "./tabela/tabela.component";
+import {InfoComponent} from "./info/info.component";
+import {ContactosComponent} from "./contactos/contactos.component";
 
 
 @NgModule({
@@ -39,6 +41,8 @@ import {TabelaComponent} from "./tabela/tabela.component";
     MapComponent,
     DashboardComponent,
     TabelaComponent,
+    InfoComponent,
+    ContactosComponent,
   ],
     imports: [
         BrowserModule,

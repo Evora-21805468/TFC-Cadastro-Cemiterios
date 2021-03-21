@@ -11,6 +11,8 @@ import {DetailConsultarMonumentoComponent} from "./consultarMonumentos/detailCon
 import {MapComponent} from "./map/map.component";
 import {DashboardComponent} from "./dashboard/dashboard.component";
 import {TabelaComponent} from "./tabela/tabela.component";
+import {InfoComponent} from "./info/info.component";
+import {ContactosComponent} from "./contactos/contactos.component";
 
 // @ts-ignore
 
@@ -56,6 +58,16 @@ const routes: Routes = [
   {
     path: 'consultarTabela',
     component: TabelaComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'info',
+    component: InfoComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'contactos',
+    component: ContactosComponent,
     canActivate: [AuthGuard]
   },
 ];

@@ -3,27 +3,87 @@
   <div class="row justify-content-center panel-container">
     <div class="col-8">
       <div *ngIf="monumento">
-        <h2><span>Monumento:</span> {{ monumento._globalId }}</h2>
-        <hr>
-        <dl class="row-md entity-details">
-          <dt><span>ID</span></dt>
-          <dd>
-            <span>{{ monumento._id }}</span>
-          </dd>
-          <dt><span>Nome</span></dt>
-          <dd>
-            <span>{{ monumento._nomeMonumento  }}</span>
-          </dd>
-          <dt><span>Rua</span></dt>
-          <dd>
-            <span>{{ monumento._rua }}</span>
-          </dd>
-          <dt><span>Epitafios</span></dt>
-          <dd>
-            <span>{{ monumento._epitafios  }}</span>
-          </dd>
-        </dl>
+        <h2><span>Monumento</span> </h2>
+        <div class="card">
+          <div class="card-header">
+            Informações Do Monumento
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Número do Monumento</h5>
+            <p class="card-text">{{ monumento._nomeMonumento  }}</p>
+            <h5 class="card-title">Rua</h5>
+            <p class="card-text">{{ monumento._rua  }}</p>
+            <h5 class="card-title">Número da Rua</h5>
+            <p class="card-text">{{ monumento._numeroRua  }}</p>
+            <h5 class="card-title">Tipologia</h5>
+            <p class="card-text">{{ monumento._tipologia  }}</p>
+            <h5 class="card-title">Elementos Simbólicos</h5>
+            <tr *ngFor="let l of list">
+              <td>- {{ l }}</td>
+            </tr>
+            <h5></h5>
+            <h5 class="card-title">Arquiteto</h5>
+            <p class="card-text">{{ monumento._arquiteto  }}</p>
+            <h5 class="card-title">Construtor</h5>
+            <p class="card-text">{{ monumento._construtor  }}</p>
+            <h5 class="card-title">Quem Mandou Construir</h5>
+            <p class="card-text">{{ monumento._quemMandouConstruir  }}</p>
+            <h5 class="card-title">Epitáfios</h5>
+            <p class="card-text">{{ monumento._epitafios  }}</p>
+            <h5 class="card-title">Beneméritos e Mecenas</h5>
+            <p class="card-text">{{ monumento._benemeritos_e_mecenas  }}</p>
+            <h5 class="card-title">Outros Elementos Escritos</h5>
+            <p class="card-text">{{ monumento._outros_elementos_escritos  }}</p>
+            <h5 class="card-title">Confrontação</h5>
+            <p class="card-text">{{ monumento._confrontacao  }}</p>
+            <h5 class="card-title">Leitura Simbólica</h5>
+            <p class="card-text">{{ monumento._leitura_simbolica  }}</p>
+
+          </div>
+        </div>
+        <h1></h1>
+        <div class="card">
+          <div class="card-header">
+            Biografias
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Biografia 1ª Personalidade no Jazigo</h5>
+            <p class="card-text">{{ monumento._biografia_1  }}</p>
+            <h5 class="card-title">Biografia 2ª Personalidade no Jazigo</h5>
+            <p class="card-text">{{ monumento._biografia_2  }}</p>
+            <h5 class="card-title">Biografia 3ª Personalidade no Jazigo</h5>
+            <p class="card-text">{{ monumento._biografia_3  }}</p>
+            <h5 class="card-title">Biografia 4ª Personalidade no Jazigo</h5>
+            <p class="card-text">{{ monumento._biografia_4  }}</p>
+            <h5 class="card-title">Biografia 5ª Personalidade no Jazigo</h5>
+            <p class="card-text">{{ monumento._biografia_5  }}</p>
+            <h5 class="card-title">Outras</h5>
+            <p class="card-text">{{ monumento._outras  }}</p>
+          </div>
+        </div>
+        <h1></h1>
+        <div class="card">
+          <div class="card-header">
+            Arquivo
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Nº do Processo</h5>
+            <p class="card-text">{{ monumento._n_do_processo  }}</p>
+            <h5 class="card-title">Alterações, obras e manutenção</h5>
+            <p class="card-text">{{ monumento._alteracoes_obras_e_manutencao  }}</p>
+            <h5 class="card-title">Mudança de Posse</h5>
+            <p class="card-text">{{ monumento._mudancaPosse  }}</p>
+            <h5 class="card-title">Outros Elementos Descritivos</h5>
+            <p class="card-text">{{ monumento._outros_elementos_descritivos  }}</p>
+            <h5 class="card-title">Sepultados</h5>
+            <p class="card-text">{{ monumento._sepultados  }}</p>
+          </div>
+        </div>
+        <h1></h1>
+        <a  href="{{link}}" target="_blank"><button class="btn btn-primary" >Direções Google Maps</button></a>
       </div>
     </div>
   </div>
+
+
 </div>

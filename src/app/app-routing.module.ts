@@ -13,6 +13,7 @@ import {DashboardComponent} from "./dashboard/dashboard.component";
 import {TabelaComponent} from "./tabela/tabela.component";
 import {InfoComponent} from "./info/info.component";
 import {ContactosComponent} from "./contactos/contactos.component";
+import {EditMonumentoComponent} from "./editMonumento/editMonumento.component";
 
 // @ts-ignore
 
@@ -43,6 +44,11 @@ const routes: Routes = [
   {
     path: 'consultarMonumento/:id/view',
     component: DetailConsultarMonumentoComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'editMonumento/:id/view',
+    component: EditMonumentoComponent,
     canActivate: [AuthGuard]
   },
   {

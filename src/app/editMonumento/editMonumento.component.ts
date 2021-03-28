@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {ActivatedRoute, ActivatedRouteSnapshot, Router} from "@angular/router";
 import {AuthService} from "../login/auth.service";
 import {AngularFirestore} from "@angular/fire/firestore";
@@ -9,22 +9,56 @@ import {HttpClient, HttpParams} from "@angular/common/http";
 import {RequestMethod, RequestOptions} from "@angular/http";
 import {combineAll} from "rxjs/operators";
 import {IUserDB} from "../consultarUsers/userDB";
-import { Monumento} from "./monumento";
+
 import {NgxSpinnerService} from "ngx-spinner";
+import {Monumento} from "../consultarMonumentos/monumento";
+
+
 
 
 @Component({
-  selector: 'app-detailConsultarMonumento',
-  templateUrl: './detailConsultarMonumento.component.html',
-  styleUrls: ['./detailConsultarMonumento.component.css']
+  selector: 'app-detailEditMonumento',
+  templateUrl: 'editMonumento.component.html',
+
 })
-export class DetailConsultarMonumentoComponent implements OnInit {
+export class EditMonumentoComponent implements OnInit {
 
    token: String = "";
    monumento: Monumento = new Monumento("0","0");
    id: number = 0;
    list:Array<string> = [];
-   link: string = "https://www.google.com/maps/search/?api=1&query="
+  formGroup: FormGroup = new FormGroup(
+    {
+      nomeMonumento: new FormControl(''),
+      rua:  new FormControl(''),
+      numeroRua:  new FormControl(''),
+      //Tipologia, escolha
+      //Elementos Simbolicos, escolha
+      arquiteto:  new FormControl(''),
+      construtor:  new FormControl(''),
+      quem_mandou_construir:  new FormControl(''),
+      epitafios:  new FormControl(''),
+      benemeritos_e_mecenas:  new FormControl(''),
+      outros_elementos_escritos:  new FormControl(''),
+      confrontacao:  new FormControl(''),
+      leitura_simbolica:  new FormControl(''),
+      biografia_1_personalidade_no_ja:  new FormControl(''),
+      biografia_2_personalidade_no_ja:  new FormControl(''),
+      biografia_3_personalidade_no_ja:  new FormControl(''),
+      biografia_4_personalidade_no_ja: new FormControl(''),
+      biografia_5_personalidade_no_ja: new FormControl(''),
+      outras:  new FormControl(''),
+      n_do_processo: new FormControl(''),
+      alteracoes_obras_e_manutencao:  new FormControl(''),
+      mudanca_de_posse: new FormControl(''),
+      outros_elementos_descritivos:  new FormControl(''),
+      sepultados: new FormControl(''),
+      // x y
+    }
+   );
+
+
+
 
     constructor(
       private formBuilder: FormBuilder,
@@ -36,6 +70,7 @@ export class DetailConsultarMonumentoComponent implements OnInit {
       protected activatedRoute: ActivatedRoute,
       protected route: ActivatedRoute,
       private spinner: NgxSpinnerService,
+
   ) {
 
   }
@@ -337,15 +372,42 @@ export class DetailConsultarMonumentoComponent implements OnInit {
       // @ts-ignore
       let y = b['feature']['geometry']['y'];
       this.monumento._myY = y;
-      this.link += y;
-      this.link += ",";
-      this.link += x;
       // @ts-ignore
       this.monumentos.push(monumento);
     }catch (ex){
 
     }
     this.spinner.hide();
+    this.formGroup = new FormGroup(
+      {
+        nomeMonumento: new FormControl(this.monumento._nomeMonumento),
+        rua:  new FormControl(this.monumento._rua),
+        numeroRua:  new FormControl(this.monumento._numeroRua),
+        //Tipologia, escolha
+        //Elementos Simbolicos, escolha
+        arquiteto:  new FormControl(this.monumento._arquiteto),
+        construtor:  new FormControl(this.monumento._construtor),
+        quem_mandou_construir:  new FormControl(this.monumento._quemMandouConstruir),
+        epitafios:  new FormControl(this.monumento._epitafios),
+        benemeritos_e_mecenas:  new FormControl(this.monumento._benemeritos_e_mecenas),
+        outros_elementos_escritos:  new FormControl(this.monumento._outros_elementos_descritivos),
+        confrontacao:  new FormControl(this.monumento._confrontacao),
+        leitura_simbolica:  new FormControl(this.monumento._leitura_simbolica),
+        biografia_1_personalidade_no_ja:  new FormControl(this.monumento._biografia_1),
+        biografia_2_personalidade_no_ja:  new FormControl(this.monumento._biografia_2),
+        biografia_3_personalidade_no_ja:  new FormControl(this.monumento._biografia_3),
+        biografia_4_personalidade_no_ja: new FormControl(this.monumento._biografia_4),
+        biografia_5_personalidade_no_ja: new FormControl(this.monumento._biografia_5),
+        outras:  new FormControl(this.monumento._outras),
+        n_do_processo: new FormControl(this.monumento._n_do_processo),
+        alteracoes_obras_e_manutencao:  new FormControl(this.monumento._alteracoes_obras_e_manutencao),
+        mudanca_de_posse: new FormControl(this.monumento._mudancaPosse),
+        outros_elementos_descritivos:  new FormControl(this.monumento._outros_elementos_descritivos),
+        sepultados: new FormControl(this.monumento._sepultados),
+        // x y
+      }
+    );
+
   }
 
 
@@ -364,5 +426,48 @@ export class DetailConsultarMonumentoComponent implements OnInit {
     return response;
   }
 
+  onSubmit(){
+    console.log( this.formGroup.value)
+    this.editMonumento()
+  }
+
+   editMonumento(){
+    console.log(this.formGroup.value['nomeMonumento'])
+    let edits = "[\n" +
+      "  {\n" +
+      "    \"attributes\" : {\n" +
+      "      \"objectid\": "+ this.monumento._id +",\n" +
+      "      \"rua\": \""+ this.formGroup.value['rua'] +"\",\n" +
+      "      \"nomeMonumento\": \""+ this.formGroup.value['nomeMonumento'] +"\",\n" +
+      "      \"numero_da_rua\": \""+ this.formGroup.value['numeroRua'] +"\",\n" +
+      "      \"arquiteto\": \""+ this.formGroup.value['arquiteto'] +"\",\n" +
+      "      \"construtor\": \""+ this.formGroup.value['construtor'] +"\",\n" +
+      "      \"quem_mandou_construir\": \""+ this.formGroup.value['quem_mandou_construir'] +"\",\n" +
+      "      \"epitafios\": \""+ this.formGroup.value['epitafios'] +"\",\n" +
+      "      \"benemeritos_e_mecenas\": \""+ this.formGroup.value['benemeritos_e_mecenas'] +"\",\n" +
+      "      \"outros_elementos_escritos\": \""+ this.formGroup.value['outros_elementos_escritos'] +"\",\n" +
+      "      \"confrontacao\": \""+ this.formGroup.value['confrontacao'] +"\",\n" +
+      "      \"biografia_1_personalidade_no_ja\": \""+ this.formGroup.value['biografia_1_personalidade_no_ja'] +"\",\n" +
+      "      \"biografia_2_personalidade_no_ja\": \""+ this.formGroup.value['biografia_2_personalidade_no_ja'] +"\",\n" +
+      "      \"biografia_3_personalidade_no_ja\": \""+ this.formGroup.value['biografia_3_personalidade_no_ja'] +"\",\n" +
+      "      \"biografia_4_personalidade_no_ja\": \""+ this.formGroup.value['biografia_4_personalidade_no_ja'] +"\",\n" +
+      "      \"biografia_5_personalidade_no_ja\": \""+ this.formGroup.value['biografia_5_personalidade_no_ja'] +"\",\n" +
+      "      \"outras\": \""+ this.formGroup.value['outras'] +"\",\n" +
+      "      \"n_do_processo\": \""+ this.formGroup.value['n_do_processo'] +"\",\n" +
+      "      \"alteracoes_obras_e_manutencao\": \""+ this.formGroup.value['alteracoes_obras_e_manutencao'] +"\",\n" +
+      "      \"mudanca_de_posse\": \""+ this.formGroup.value['mudanca_de_posse'] +"\",\n" +
+      "      \"outros_elementos_descritivos\": \""+ this.formGroup.value['outros_elementos_descritivos'] +"\",\n" +
+      "      \"sepultados\": \""+ this.formGroup.value['sepultados'] +"\"\n" +
+      "    }\n" +
+      "  }\n" +
+      "]\n"
+     console.log(edits)
+
+    let i = ""
+    let body = new HttpParams().set('f', 'json').set('token', this.token.toString()).set('updates',edits);
+    let response: Promise<Object> = this.http.post('https://services-eu1.arcgis.com/kJpwBKPhHXDuJncY/arcgis/rest/services/survey123_1278669bc6f64f089d84969cb31c3aa7_stakeholder/FeatureServer/0/applyEdits', body).toPromise();
+    return response;
+
+  }
 
 }

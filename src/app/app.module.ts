@@ -26,6 +26,7 @@ import {DashboardComponent} from "./dashboard/dashboard.component";
 import {TabelaComponent} from "./tabela/tabela.component";
 import {InfoComponent} from "./info/info.component";
 import {ContactosComponent} from "./contactos/contactos.component";
+import {EditMonumentoComponent} from "./editMonumento/editMonumento.component";
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import {ContactosComponent} from "./contactos/contactos.component";
     TabelaComponent,
     InfoComponent,
     ContactosComponent,
+    EditMonumentoComponent
   ],
     imports: [
         BrowserModule,

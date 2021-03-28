@@ -1,0 +1,70 @@
+<div id="content" class="ui container">
+  <ngx-spinner template="<img src='../assets/images/gif.gif'  />" ></ngx-spinner>
+  <div class="row justify-content-center panel-container">
+    <div class="col-8">
+      <div *ngIf="monumento">
+        <form [formGroup]="formGroup">
+          <h2><span>Monumento</span> </h2>
+          <div class="card">
+            <div class="card-header">
+              Informações Do Monumento
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Número do Monumento</h5>
+              <textarea id="nomeMonumento" type="text" formControlName="nomeMonumento" ></textarea>
+              <h5 class="card-title">Rua</h5>
+              <textarea id="rua" type="text" formControlName="rua" ></textarea>
+              <h5 class="card-title">Número da Rua</h5>
+              <textarea id="numeroRua" type="text" formControlName="numeroRua" ></textarea>
+              <h5 class="card-title">Arquiteto</h5>
+              <textarea id="arquiteto" type="text" formControlName="arquiteto" ></textarea>
+              <h5 class="card-title">Construtor</h5>
+              <textarea id="construtor" type="text" formControlName="construtor" ></textarea>
+              <h5 class="card-title">Quem Mandou Construir</h5>
+              <textarea id="quem_mandou_construir" type="text" formControlName="quem_mandou_construir" ></textarea>
+              <h5 class="card-title">Epitáfios</h5>
+              <textarea id="epitafios" type="text" formControlName="epitafios" ></textarea>
+              <h5 class="card-title">Beneméritos e Mecenas</h5>
+              <textarea id="benemeritos_e_mecenas" type="text" formControlName="benemeritos_e_mecenas" ></textarea>
+              <h5 class="card-title">Outros Elementos Escritos</h5>
+              <textarea id="outros_elementos_escritos" type="text" formControlName="outros_elementos_escritos" ></textarea>
+              <h5 class="card-title">Confrontação</h5>
+              <textarea id="confrontacao" type="text" formControlName="confrontacao" ></textarea>
+              <h5 class="card-title">Leitura Simbólica</h5>
+              <textarea id="leitura_simbolica" type="text" formControlName="leitura_simbolica" ></textarea>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Biografia 1ª Personalidade no Jazigo</h5>
+              <textarea id="biografia_1_personalidade_no_ja" type="text" formControlName="biografia_1_personalidade_no_ja" ></textarea>
+              <h5 class="card-title">Biografia 2ª Personalidade no Jazigo</h5>
+              <textarea id="biografia_2_personalidade_no_ja" type="text" formControlName="biografia_2_personalidade_no_ja" ></textarea>
+              <h5 class="card-title">Biografia 3ª Personalidade no Jazigo</h5>
+              <textarea id="biografia_3_personalidade_no_ja" type="text" formControlName="biografia_3_personalidade_no_ja" ></textarea>
+              <h5 class="card-title">Biografia 4ª Personalidade no Jazigo</h5>
+              <textarea id="biografia_4_personalidade_no_ja" type="text" formControlName="biografia_4_personalidade_no_ja" ></textarea>
+              <h5 class="card-title">Biografia 5ª Personalidade no Jazigo</h5>
+              <textarea id="biografia_5_personalidade_no_ja" type="text" formControlName="biografia_5_personalidade_no_ja" ></textarea>
+              <h5 class="card-title">Outras</h5>
+              <textarea id="outras" type="text" formControlName="outras" ></textarea>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Nº do Processo</h5>
+              <textarea id="n_do_processo" type="text" formControlName="n_do_processo" ></textarea>
+              <h5 class="card-title">Alterações, obras e manutenção</h5>
+              <textarea id="alteracoes_obras_e_manutencao" type="text" formControlName="alteracoes_obras_e_manutencao" ></textarea>
+              <h5 class="card-title">Mudança de Posse</h5>
+              <textarea id="mudanca_de_posse" type="text" formControlName="mudanca_de_posse" ></textarea>
+              <h5 class="card-title">Outros Elementos Descritivos</h5>
+              <textarea id="outros_elementos_descritivos" type="text" formControlName="outros_elementos_descritivos" ></textarea>
+              <h5 class="card-title">Sepultados</h5>
+              <textarea id="sepultados" type="text" formControlName="sepultados" ></textarea>
+            </div>
+          </div>
+          <p>
+            <button (click)="onSubmit()">Submit</button>
+          </p>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>

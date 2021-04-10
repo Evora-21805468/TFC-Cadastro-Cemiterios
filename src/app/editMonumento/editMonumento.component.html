@@ -16,6 +16,42 @@
               <textarea id="rua" type="text" formControlName="rua" ></textarea>
               <h5 class="card-title">Número da Rua</h5>
               <textarea id="numeroRua" type="text" formControlName="numeroRua" ></textarea>
+              <h5 class="card-title">Tipologia</h5>
+              <input type="checkbox" [checked]="jazigoCapelaCheck" (change)="jazigoCapelaCheck = !jazigoCapelaCheck"   /> Jazigo Capela <br>
+              <input type="checkbox" [checked]="jazigoSubterraneoCheck" (change)="jazigoSubterraneoCheck = !jazigoSubterraneoCheck" /> Jazigo Subterrâneo <br>
+              <input type="checkbox" [checked]="monumentoCheck" (change)="monumentoCheck = !monumentoCheck" /> Monumento <br>
+              <input type="checkbox" [checked]="sepulturaPerpetuaCheck" (change)="sepulturaPerpetuaCheck = !sepulturaPerpetuaCheck" /> Sepultura Perpétua <br>
+
+              <h5 class="card-title">Elementos Simbólicos</h5>
+              <input type="checkbox" [checked]="triangulo_simples" (change)="triangulo_simples = !triangulo_simples "   /> Triângulo simples <br>
+              <input type="checkbox" [checked]="triangulo_solarizado " (change)="triangulo_solarizado  = triangulo_solarizado !"   /> Triângulo solarizado <br>
+              <input type="checkbox" [checked]="triangulo_com_olho " (change)="triangulo_com_olho  = !triangulo_com_olho "   /> Triângulo com Olho <br>
+              <input type="checkbox" [checked]="triangulos_no_arranjo_e_decorac" (change)="triangulos_no_arranjo_e_decorac = !triangulos_no_arranjo_e_decorac"   /> Triângulos no arranjo e decoração geométrca <br>
+              <input type="checkbox" [checked]="repeticoes_geometricas_de_figur " (change)="repeticoes_geometricas_de_figur  = !repeticoes_geometricas_de_figur "   /> Repetições geométricas de figuras triangulares (3, 7, etc) <br>
+              <input type="checkbox" [checked]="esquadro_compasso_e_ou_prumo " (change)="esquadro_compasso_e_ou_prumo  = !esquadro_compasso_e_ou_prumo "   /> Esquadro, Compasso e/ou Prumo <br>
+              <input type="checkbox" [checked]="colmeia_e_ou_abelhas" (change)="colmeia_e_ou_abelhas = !colmeia_e_ou_abelhas"   /> Colmeia e/ou Abelhas <br>
+              <input type="checkbox" [checked]="sol_radiado " (change)="sol_radiado  = !sol_radiado "   /> Sol radiado <br>
+              <input type="checkbox" [checked]="aguas_primordiais " (change)="aguas_primordiais  = !aguas_primordiais "   /> Águas primordiais <br>
+              <input type="checkbox" [checked]="chao_axadrezado " (change)="chao_axadrezado  = !chao_axadrezado "   /> Chão axadrezado <br>
+              <input type="checkbox" [checked]="superficie_axadrezada " (change)="superficie_axadrezada  = !superficie_axadrezada "   /> Superfície axadrezada <br>
+              <input type="checkbox" [checked]="tres_degraus " (change)="tres_degraus  = !tres_degraus "   /> Três degraus <br>
+              <input type="checkbox" [checked]="escrita_cifrada" (change)="escrita_cifrada = !escrita_cifrada"   /> Escrita cifrada <br>
+              <input type="checkbox" [checked]="estrela_de_cinco_pontas " (change)="estrela_de_cinco_pontas  = !estrela_de_cinco_pontas "   /> Estrela de cinco pontas <br>
+              <input type="checkbox" [checked]="duas_colunas " (change)=" duas_colunas = !duas_colunas "   /> Duas colunas <br>
+              <input type="checkbox" [checked]="romas" (change)="romas = !romas"   /> Romãs <br>
+              <input type="checkbox" [checked]="malhete" (change)="malhete = !malhete"   /> Malhete <br>
+              <input type="checkbox" [checked]="colar " (change)=" colar = !colar "   /> Colar <br>
+              <input type="checkbox" [checked]="forma_piramidal " (change)="forma_piramidal  = !forma_piramidal "   /> Forma piramidal <br>
+              <input type="checkbox" [checked]="lagrimas_invertidas " (change)="lagrimas_invertidas  = !lagrimas_invertidas "   /> Lágrimas invertidas <br>
+              <input type="checkbox" [checked]="aperto_de_mao" (change)="aperto_de_mao = !aperto_de_mao"   /> Aperto de mão <br>
+              <input type="checkbox" [checked]="folhas_de_acacia " (change)="folhas_de_acacia  = !folhas_de_acacia "   /> Folhas de acácia <br>
+              <input type="checkbox" [checked]="aguia_bicefala " (change)="aguia_bicefala  = !aguia_bicefala "   /> Águia bicéfala <br>
+              <input type="checkbox" [checked]="simulacao_de_templo " (change)="simulacao_de_templo  = !simulacao_de_templo "   /> Simulação de templo <br>
+              <input type="checkbox" [checked]="elementos_simbolicos_other " (change)="elementos_simbolicos_other  = !elementos_simbolicos_other "   /> Outro <br>
+
+
+
+
               <h5 class="card-title">Arquiteto</h5>
               <textarea id="arquiteto" type="text" formControlName="arquiteto" ></textarea>
               <h5 class="card-title">Construtor</h5>
@@ -59,7 +95,15 @@
               <h5 class="card-title">Sepultados</h5>
               <textarea id="sepultados" type="text" formControlName="sepultados" ></textarea>
             </div>
+
+            <div class="card-body">
+              <h5 class="card-title">Localização</h5>
+              <button type=button class="btn btn-secondary"  (click)="showPosition()">Refresh</button>
+              <h5 id="result"></h5>
+              <button type=button class="btn btn-primary"  (click)="clickMethod()">Alterar Localização Do Monumento para Minha Localização Atual</button>
+            </div>
           </div>
+
           <p>
             <button (click)="onSubmit()">Submit</button>
           </p>

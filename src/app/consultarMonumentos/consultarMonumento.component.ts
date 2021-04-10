@@ -41,7 +41,7 @@ export class ConsultarMonumentoComponent implements OnInit {
     let a = await this.getToken();
     // @ts-ignore
     this.token = a['access_token'];
-    for(let i= 1; i < 50;i++){
+    for(let i= 1; i < 20;i++){
       let b = await this.getMonumentos(i);
       try{
         // @ts-ignore

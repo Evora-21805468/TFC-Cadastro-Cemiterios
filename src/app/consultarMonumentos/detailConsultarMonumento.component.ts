@@ -75,28 +75,31 @@ export class DetailConsultarMonumentoComponent implements OnInit {
       }
       // @ts-ignore
       let tipologia = b['feature']['attributes']['tipologia'];
-      this.monumento._tipologia = tipologia;
       if(tipologia == null){
         this.monumento._tipologia = "Sem Dados";
       }else{
-        switch (tipologia){
-          case "jazigo_capela":{
-            this.monumento._tipologia = "Jazigo Capela";
-            break;
-          }
-          case "jazigo_subterrâneo":{
-            this.monumento._tipologia = "Jazigo subterrâneo";
-            break;
-          }
-          case "monumento":{
-            this.monumento._tipologia = "Monumento";
-            break;
-          }
-          case "sepultura_perpétua":{
-            this.monumento._tipologia = "Sepultura Perpétua";
-            break;
+        let splitElementosTipo = tipologia.split(",");
+        for (let i of splitElementosTipo) {
+          switch (i) {
+            case "jazigo_capela": {
+              this.monumento._tipologia += "Jazigo Capela /";
+              break;
+            }
+            case "jazigo_subterrâneo": {
+              this.monumento._tipologia += "Jazigo subterrâneo /";
+              break;
+            }
+            case "monumento": {
+              this.monumento._tipologia += "Monumento /";
+              break;
+            }
+            case "sepultura_perpétua": {
+              this.monumento._tipologia += "Sepultura Perpétua /";
+              break;
+            }
           }
         }
+        this.monumento._tipologia = this.monumento._tipologia.slice(0,-1)
       }
 
       // @ts-ignore

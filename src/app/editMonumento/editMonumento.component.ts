@@ -11,6 +11,7 @@ import {Monumento} from "../consultarMonumentos/monumento";
 
 
 
+
 @Component({
   selector: 'app-detailEditMonumento',
   templateUrl: 'editMonumento.component.html',
@@ -102,7 +103,7 @@ export class EditMonumentoComponent implements OnInit {
   private unsubscribe: Subject<void> = new Subject<void>();
 
   async ngOnInit() {
-
+    this.showPosition()
     this.spinner.show();
     // @ts-ignore
     this.id = parseInt(this.route.snapshot.paramMap.get("id"));
@@ -628,12 +629,68 @@ export class EditMonumentoComponent implements OnInit {
   }
 
 
-   clickMethod(){
+  clickMethod(name: string) {
+    if(confirm("DESEJA ALTERAR A LOCALIZAÇÂO DO MONUMENTO PARA A SUA LOCALIZAÇÃO ATUAL?")) {
+        this.changeLoc()
+    }
+  }
 
-   }
+  getX(){
+    // @ts-ignore
+    return  document.getElementById("lon").innerHTML
+  }
 
-  showPosition(){
+  getY(){
+    // @ts-ignore
+    return  document.getElementById("la").innerHTML
+  }
 
+  changeLoc(){
+
+    let edits = "[\n" +
+      "  {\n" +
+      "    \"geometry\" : {\n" +
+      "      \"x\": " + this.getX() + "\n" +
+      "      \"y\": " + this.getY() + "\n" +
+      "    }\n" +
+      "    \"attributes\" : {\n" +
+      "      \"objectid\": " + this.monumento._id + "\n" +
+      "    }\n" +
+      "  }\n" +
+      "]\n"
+    console.log(edits)
+
+    let i = ""
+    let body = new HttpParams().set('f', 'json').set('token', this.token.toString()).set('updates', edits);
+    let response: Promise<Object> = this.http.post('https://services-eu1.arcgis.com/kJpwBKPhHXDuJncY/arcgis/rest/services/survey123_1278669bc6f64f089d84969cb31c3aa7_stakeholder/FeatureServer/0/applyEdits', body).toPromise();
+    return response;
+
+  }
+
+
+
+   showPosition() {
+    if(navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        var positionInfo = "A sua localização é: <br>" ;
+        var lonText = "Longitude: <br>"
+        var lon = position.coords.longitude
+        var laText = "Latitude: <br>"
+        var la = position.coords.latitude
+        // @ts-ignore
+        document.getElementById("result").innerHTML = positionInfo;
+        // @ts-ignore
+        document.getElementById("result1").innerHTML = lonText;
+        // @ts-ignore
+        document.getElementById("lon").innerHTML = lon;
+        // @ts-ignore
+        document.getElementById("result3").innerHTML = laText;
+        // @ts-ignore
+        document.getElementById("la").innerHTML = la;
+      });
+    } else {
+      alert("O seu navegador não suporta localização");
+    }
   }
 
 

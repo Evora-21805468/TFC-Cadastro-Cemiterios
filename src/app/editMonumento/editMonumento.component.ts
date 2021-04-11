@@ -647,17 +647,23 @@ export class EditMonumentoComponent implements OnInit {
 
   changeLoc(){
 
-    let edits = "[\n" +
+
+    let edits =
+      "[\n" +
       "  {\n" +
       "    \"geometry\" : {\n" +
-      "      \"x\": " + this.getX() + "\n" +
-      "      \"y\": " + this.getY() + "\n" +
+      "      \"x\": " + this.getX() + ",\n" +
+      "      \"y\": " + this.getY() + ",\n" +
+      "      \"spatialReference\": " + "{\n" +
+      "      \"wkid\": " + "4326" + "\n" +
       "    }\n" +
+      "    },\n" +
       "    \"attributes\" : {\n" +
       "      \"objectid\": " + this.monumento._id + "\n" +
       "    }\n" +
       "  }\n" +
       "]\n"
+
     console.log(edits)
 
     let i = ""

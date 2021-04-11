@@ -1,5 +1,16 @@
 <div id="content" class="ui container">
-<div class="panel-container">
+  <div class="panel-container" *ngIf="!checkAdmin()">
+    <h2>
+      <span>Utilizadores</span>
+    </h2>
+
+    <div class="alert alert-warning"  >
+      <span>Sem Permissões</span>
+    </div>
+
+
+  </div>
+<div class="panel-container" *ngIf="checkAdmin()">
   <h2>
     <span>Utilizadores:</span>
   </h2>

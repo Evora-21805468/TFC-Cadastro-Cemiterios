@@ -11,6 +11,7 @@ import {combineAll} from "rxjs/operators";
 import {IUserDB} from "../consultarUsers/userDB";
 import { Monumento} from "./monumento";
 import {NgxSpinnerService} from "ngx-spinner";
+import {SharedAuth} from '../login/SharedAuth'
 
 
 @Component({
@@ -21,6 +22,8 @@ import {NgxSpinnerService} from "ngx-spinner";
 export class ConsultarMonumentoComponent implements OnInit {
 
    token: String = "";
+   i = 0;
+   admin: boolean = false;
    monumentos: Monumento[] = [];
 
     constructor(
@@ -31,17 +34,41 @@ export class ConsultarMonumentoComponent implements OnInit {
       public angularAuth: AngularFireAuth,
       private http: HttpClient,
       private spinner: NgxSpinnerService,
+      public ls: SharedAuth
   ) {
 
   }
   private unsubscribe: Subject<void> = new Subject<void>();
 
   async ngOnInit() {
+   this.moreMonumentos()
+    this.admin = this.ls.getGlobalVar()
+  }
+
+
+  async getToken(){
+    let i = ""
+    let body = new HttpParams().set('client_id', 'XXScCjKChAwLaplj').set('client_secret', 'd32e344e3b144845a07d75fef9cd9b9e').set('grant_type','client_credentials');
+    let response: Promise<Object> = this.http.post('https://www.arcgis.com/sharing/rest/oauth2/token', body).toPromise();
+    return response;
+  }
+
+  async getMonumentos(num: number){
+    let i = ""
+    let body = new HttpParams().set('f', 'json').set('token', this.token.toString());
+    let url = 'https://services-eu1.arcgis.com/kJpwBKPhHXDuJncY/arcgis/rest/services/survey123_1278669bc6f64f089d84969cb31c3aa7/FeatureServer/survey/' + num;
+    let response: Promise<Object> = this.http.post(url, body).toPromise();
+    return response;
+  }
+
+  async moreMonumentos(){
     this.spinner.show();
     let a = await this.getToken();
     // @ts-ignore
     this.token = a['access_token'];
-    for(let i= 1; i < 20;i++){
+    let f = this.i + 50
+    for(this.i; this.i < f;this.i++){
+      let i = this.i;
       let b = await this.getMonumentos(i);
       try{
         // @ts-ignore
@@ -237,22 +264,26 @@ export class ConsultarMonumentoComponent implements OnInit {
 
      */
     this.spinner.hide();
+    console.log(this.i)
   }
 
+  apagarMonumento(id: string){
+    if(confirm("DESEJA APAGAR ESTE MONUMENTO?")) {
+      let edits =
+        "[\n" +
+       id +"\n"+
+        "]\n"
 
-  async getToken(){
-    let i = ""
-    let body = new HttpParams().set('client_id', 'XXScCjKChAwLaplj').set('client_secret', 'd32e344e3b144845a07d75fef9cd9b9e').set('grant_type','client_credentials');
-    let response: Promise<Object> = this.http.post('https://www.arcgis.com/sharing/rest/oauth2/token', body).toPromise();
-    return response;
-  }
+      console.log(edits)
 
-  async getMonumentos(num: number){
-    let i = ""
-    let body = new HttpParams().set('f', 'json').set('token', this.token.toString());
-    let url = 'https://services-eu1.arcgis.com/kJpwBKPhHXDuJncY/arcgis/rest/services/survey123_1278669bc6f64f089d84969cb31c3aa7/FeatureServer/survey/' + num;
-    let response: Promise<Object> = this.http.post(url, body).toPromise();
-    return response;
+      let i = ""
+      let body = new HttpParams().set('f', 'json').set('token', this.token.toString()).set('deletes', edits);
+      let response: Promise<Object> = this.http.post('https://services-eu1.arcgis.com/kJpwBKPhHXDuJncY/arcgis/rest/services/survey123_1278669bc6f64f089d84969cb31c3aa7_stakeholder/FeatureServer/0/applyEdits', body).toPromise();
+      return response;
+    }else{
+      return ""
+    }
+
   }
 
 

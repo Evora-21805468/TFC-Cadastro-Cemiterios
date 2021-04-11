@@ -4,6 +4,8 @@ import {IUser, User} from './user';
 import {AuthService} from './auth.service';
 import firebase from 'firebase';
 import {environment} from '../../environments/environment';
+import {SharedAuth} from './SharedAuth'
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -17,13 +19,14 @@ export class LoginComponent implements OnInit {
 
 
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService,public ls: SharedAuth) { }
 
   ngOnInit(): void {
 
   }
 
   login(): void{
+    this.ls.setGlobalVar(false)
     this.authService.login(this.user);
   }
 

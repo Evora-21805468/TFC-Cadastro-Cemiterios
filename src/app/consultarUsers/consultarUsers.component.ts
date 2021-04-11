@@ -8,6 +8,7 @@ import {AngularFireAuth} from "@angular/fire/auth";
 import {Observable, Subject} from "rxjs";
 import {switchMap, takeUntil} from "rxjs/operators";
 import {IUserDB} from "./userDB";
+import {SharedAuth} from '../login/SharedAuth'
 
 
 @Component({
@@ -20,11 +21,12 @@ export class ConsultarUsersComponent implements OnInit {
   users: IUserDB[] = [];
 
 
+
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
     private authService: AuthService,
-    public af: AngularFirestore, public angularAuth: AngularFireAuth
+    public af: AngularFirestore, public angularAuth: AngularFireAuth,public ls: SharedAuth
   ) { }
   private unsubscribe: Subject<void> = new Subject<void>();
 
@@ -54,6 +56,10 @@ export class ConsultarUsersComponent implements OnInit {
       uid: user.uid,
         });
 
+  }
+
+  checkAdmin(): boolean{
+    return this.ls.getGlobalVar()
   }
 
 }

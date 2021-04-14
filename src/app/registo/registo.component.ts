@@ -71,6 +71,12 @@ export class RegistoComponent implements OnInit {
         .catch((error) => {
           var errorCode = error.code;
           var errorMessage = error.message;
+          if(errorCode == "auth/weak-password"){
+              this.erro = "A password têm que ter no minimo 6 caracteres!"
+          }
+          if(errorCode == "auth/email-already-in-use"){
+            this.erro = "Este Email já se encontra registado!"
+          }
 
         });
     }

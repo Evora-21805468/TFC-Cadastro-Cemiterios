@@ -14,6 +14,7 @@ import {TabelaComponent} from "./tabela/tabela.component";
 import {InfoComponent} from "./info/info.component";
 import {ContactosComponent} from "./contactos/contactos.component";
 import {EditMonumentoComponent} from "./editMonumento/editMonumento.component";
+import { RecuperacaoComponent } from './recuperacao/recup.component';
 
 // @ts-ignore
 
@@ -27,7 +28,16 @@ const routes: Routes = [
     component:  RegistoComponent
   },
   {
+    path: 'recuperacao',
+    component:  RecuperacaoComponent
+  },
+  {
     path: '',
+    component: MainComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: '/',
     component: MainComponent,
     canActivate: [AuthGuard]
   },

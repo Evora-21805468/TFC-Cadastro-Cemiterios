@@ -19,7 +19,7 @@ export class NavbarComponent implements OnInit {
 
 
    checkLogin(): boolean {
-    if (this.router.url === '/login' || this.router.url === '/registo') {
+    if (this.router.url === '/login' || this.router.url === '/registo' || this.router.url === '/recuperacao') {
       return false;
     } else {
       return true;

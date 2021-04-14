@@ -1,0 +1,34 @@
+<div class="container-fluid">
+  <div class="row main-content bg-success text-center">
+    <div class="col-md-4 text-center company__info">
+      <img src="./assets/images/logo_cemiterios_dark.png" alt="logo cemiterio" class="center" width="200" height="200">
+      <h4 class="company_title">Cemitério Dos Prazeres Maçonaria</h4>
+    </div>
+    <div class="col-md-8 col-xs-12 col-sm-12 login_form ">
+      <div class="container-fluid">
+        <div class="row">
+          <form  class="form-group">
+            <div class="row">
+              <h2 class = "center">Recuperar Conta!</h2>
+            </div>
+            <div class="row">
+              <hr>
+            </div>
+            <div class="row">
+              <h3>Será enviado um email para recuperar a sua password!</h3>
+            </div>
+            <div class="row">
+              <input [(ngModel)]="user.email"  type="text" name="email" id="email" class="form__input" placeholder="E-mail">
+            </div>
+          </form>
+        </div>
+        <div class="row center">
+          <h4 id="erroRecup" style="color:red"></h4>
+        </div>
+        <div class="row">
+          <a class="btn center" (click)="this.recup()">Recuperar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

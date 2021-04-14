@@ -25,6 +25,7 @@ export class ConsultarMonumentoComponent implements OnInit {
    i = 0;
    admin: boolean = false;
    monumentos: Monumento[] = [];
+  searchTerms = "";
 
     constructor(
       private formBuilder: FormBuilder,
@@ -97,9 +98,31 @@ export class ConsultarMonumentoComponent implements OnInit {
         }
         // @ts-ignore
         let tipologia = b['feature']['attributes']['tipologia'];
-        monumento._tipologia = tipologia;
-        if(tipologia == ""){
-          monumento._tipologia = "Sem Dados";
+        if(tipologia == null){
+         monumento._tipologia = "Sem Dados";
+        }else{
+          let splitElementosTipo = tipologia.split(",");
+          for (let i of splitElementosTipo) {
+            switch (i) {
+              case "jazigo_capela": {
+               monumento._tipologia += "Jazigo Capela /";
+                break;
+              }
+              case "jazigo_subterrâneo": {
+                monumento._tipologia += "Jazigo subterrâneo /";
+                break;
+              }
+              case "monumento": {
+                monumento._tipologia += "Monumento /";
+                break;
+              }
+              case "sepultura_perpétua": {
+                monumento._tipologia += "Sepultura Perpétua /";
+                break;
+              }
+            }
+          }
+          monumento._tipologia = monumento._tipologia.slice(0,-1)
         }
         // @ts-ignore
         let elementosSimbolicos = b['feature']['attributes']['elementos_simbolicos'];
@@ -264,7 +287,7 @@ export class ConsultarMonumentoComponent implements OnInit {
 
      */
     this.spinner.hide();
-    console.log(this.i)
+    //console.log(this.i)
   }
 
   apagarMonumento(id: string){
@@ -273,17 +296,58 @@ export class ConsultarMonumentoComponent implements OnInit {
         "[\n" +
        id +"\n"+
         "]\n"
-
-      console.log(edits)
-
       let i = ""
       let body = new HttpParams().set('f', 'json').set('token', this.token.toString()).set('deletes', edits);
       let response: Promise<Object> = this.http.post('https://services-eu1.arcgis.com/kJpwBKPhHXDuJncY/arcgis/rest/services/survey123_1278669bc6f64f089d84969cb31c3aa7_stakeholder/FeatureServer/0/applyEdits', body).toPromise();
+      let count = 0;
+      let iN: number = 0
+      for(iN; iN < this.monumentos.length; iN++){
+        if(this.monumentos[iN]._id == id){
+          count = iN;
+        }
+      }
+      this.monumentos.splice(count,1)
       return response;
     }else{
       return ""
     }
 
+
+  }
+
+  search(term: string):void{
+    this.searchTerms = term;
+  }
+
+  searchCheck(monumento: Monumento): boolean {
+    if (this.searchTerms === "") {
+      return true;
+    }
+    if(monumento._nomeMonumento!= null){
+      if ( monumento._nomeMonumento.toLowerCase().includes(this.searchTerms.toLowerCase())  ) {
+        return true;
+      }
+    }
+
+    if(monumento._tipologia!= null){
+      if ( monumento._tipologia.toLowerCase().includes(this.searchTerms.toLowerCase())  ) {
+        return true;
+      }
+    }
+
+    if(monumento._numeroRua!= null){
+      if ( monumento._numeroRua.toString().toLowerCase().includes(this.searchTerms.toLowerCase())  ) {
+        return true;
+      }
+    }
+
+    if(monumento._arquiteto!= null){
+      if ( monumento._arquiteto.toLowerCase().includes(this.searchTerms.toLowerCase())  ) {
+        return true;
+      }
+    }
+
+    return false;
   }
 
 

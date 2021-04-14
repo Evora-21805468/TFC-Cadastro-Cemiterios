@@ -9,36 +9,49 @@
       <span>A procurar na base de dados... Aguarde...</span>
     </div>
 
+
     <div class="table-responsive" id="projectsTable" *ngIf="monumentos.length > 0">
+      <div class="card text-white bg-secondary" style="width: 25rem;" >
+        <h3 class="card-title">Pesquisa</h3>
+        <input #searchBox id="search-box" (input)="search(searchBox.value)" placeholder="Ex: Jazigo" />
+      </div>
       <table class="table table-striped" aria-describedby="page-heading">
         <thead>
         <tr>
-          <th scope="col" ><span>ID</span></th>
-          <th scope="col" ><span>Nome</span></th>
+          <th scope="col" ><span>Numero Monumento</span></th>
+          <th scope="col" ><span>Tipologia</span></th>
           <th scope="col" ><span>Numero Rua</span></th>
-          <th scope="col" ><span>Rua</span></th>
+          <th scope="col" ><span>Arquiteto</span></th>
         </tr>
         </thead>
         <tbody>
         <tr *ngFor="let monumento of monumentos">
-          <td>{{ monumento._id }}</td>
+          <ng-container *ngIf="searchCheck(monumento)">
           <td>{{ monumento._nomeMonumento }}</td>
+          <td>{{ monumento._tipologia }}</td>
           <td>{{ monumento._numeroRua }}</td>
-          <td>{{ monumento._rua }}</td>
+          <td>{{ monumento._arquiteto }}</td>
+            <div class="btn-group">
           <td>
-          <button type="submit" [routerLink]="[monumento._id, 'view']" class="btn btn-primary btn-sm">
+          <button type="submit" [routerLink]="[monumento._id, 'view']" class="btn btn-info btn-sm">
             <i class="fa fa-pencil"></i>
-            <span class="d-none d-md-inline">MAIS INFO</span>
+            <span class="d-none d-md-inline">INFO</span>
           </button>
+          </td>
+          <td>
             <button type="submit" [routerLink]="['/editMonumento', monumento._id, 'view']" *ngIf="admin" class="btn btn-primary btn-sm">
               <i class="fa fa-pencil"></i>
               <span class="d-none d-md-inline">EDITAR</span>
             </button>
+          </td>
+          <td>
             <button type="submit" (click)="apagarMonumento(monumento._id)" *ngIf="admin" class="btn btn-danger btn-sm">
               <i class="fa fa-pencil"></i>
               <span class="d-none d-md-inline">DELETE</span>
             </button>
           </td>
+            </div>
+          </ng-container>
         </tr>
         </tbody>
       </table>

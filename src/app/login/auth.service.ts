@@ -15,7 +15,17 @@ export class AuthService {
 
   }
 
-  login(user: IUser): void {
+  login(user: IUser) {
+    if(user.email == null || user.email == ""){
+      // @ts-ignore
+      document.getElementById("erro").innerHTML = "Preencha todos os campos!";
+      return;
+    }
+    if(user.password == null || user.password == ""){
+      // @ts-ignore
+      document.getElementById("erro").innerHTML = "Preencha todos os campos!";
+      return;
+    }
     if (user.email != null && user.password != null) {
       firebase.auth().signInWithEmailAndPassword(user.email, user.password)
         .then(() => {
@@ -26,10 +36,12 @@ export class AuthService {
         .catch(function(error) {
         var errorCode = error.code;
         var errorMessage = error.message;
-        if (errorCode === 'auth/wrong-password') {
-          console.log('Wrong password.');
+        if (errorCode ===  "auth/wrong-password") {
+          // @ts-ignore
+          document.getElementById("erro").innerHTML = "Password Errada.";
         } else {
-          console.log('Email sem registo');
+          // @ts-ignore
+          document.getElementById("erro").innerHTML = "Email Sem Registo.";
         }
       });
     }

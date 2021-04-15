@@ -1,9 +1,9 @@
 <div id="content" class="ui container">
   <ngx-spinner template="<img src='../assets/images/gif.gif'  />" ></ngx-spinner>
   <div class="panel-container">
-    <h2>
+    <h1>
       <span>Monumentos</span>
-    </h2>
+    </h1>
 
     <div class="alert alert-warning" id="no-result" *ngIf="monumentos?.length === 0">
       <span>A procurar na base de dados... Aguarde...</span>
@@ -12,7 +12,7 @@
 
     <div class="table-responsive" id="projectsTable" *ngIf="monumentos.length > 0">
       <div class="card text-white bg-secondary" style="width: 25rem;" >
-        <h3 class="card-title">Pesquisa</h3>
+        <h2 class="card-title">Pesquisa</h2>
         <input #searchBox id="search-box" (input)="search(searchBox.value)" placeholder="Ex: Jazigo" />
         <div class="settings">
             <label for="jc">Jazigo Capela  </label>

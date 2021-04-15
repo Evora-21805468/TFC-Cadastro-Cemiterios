@@ -403,7 +403,7 @@ export class ConsultarMonumentoComponent implements OnInit {
         }
       }
     }
-
+/*
     if(monumento._arquiteto!= null){
       if ( monumento._arquiteto.toLowerCase().includes(this.searchTerms.toLowerCase())  ) {
         if(this.jazigoCapelaCheck || this.jazigoSubterraneoCheck || this.monumentoCheck || this.sepulturaPerpetuaCheck){
@@ -423,6 +423,8 @@ export class ConsultarMonumentoComponent implements OnInit {
         }
       }
     }
+
+ */
 
     return false;
   }

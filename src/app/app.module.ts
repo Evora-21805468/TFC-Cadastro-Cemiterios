@@ -28,6 +28,7 @@ import {InfoComponent} from "./info/info.component";
 import {ContactosComponent} from "./contactos/contactos.component";
 import {EditMonumentoComponent} from "./editMonumento/editMonumento.component";
 import {RecuperacaoComponent} from './recuperacao/recup.component';
+import { NgxBootstrapIconsModule, allIcons } from 'ngx-bootstrap-icons';
 
 
 @NgModule({
@@ -59,7 +60,8 @@ import {RecuperacaoComponent} from './recuperacao/recup.component';
         HttpClientModule,
         HttpModule,
         NgxSpinnerModule,
-      BrowserAnimationsModule
+      BrowserAnimationsModule,
+      NgxBootstrapIconsModule.pick(allIcons)
 
     ],
   providers: [AuthService,AngularFirestore],

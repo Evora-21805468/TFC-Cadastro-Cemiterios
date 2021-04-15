@@ -28,10 +28,10 @@
       <table class="table table-striped" aria-describedby="page-heading">
         <thead>
         <tr>
-          <th scope="col" ><span>Numero Monumento</span></th>
+          <th scope="col" ><span>Nº Monumento</span></th>
           <th scope="col" ><span>Tipologia</span></th>
-          <th scope="col" ><span>Numero Rua</span></th>
-          <th scope="col" ><span>Arquiteto</span></th>
+          <th scope="col" ><span>Nº Rua</span></th>
+          <th scope="col" ><span>Opções</span></th>
         </tr>
         </thead>
         <tbody>
@@ -40,23 +40,22 @@
           <td>{{ monumento._nomeMonumento }}</td>
           <td>{{ monumento._tipologia }}</td>
           <td>{{ monumento._numeroRua }}</td>
-          <td>{{ monumento._arquiteto }}</td>
             <div class="btn-group">
           <td>
           <button type="submit" [routerLink]="[monumento._id, 'view']" class="btn btn-info btn-sm">
-            <i class="bi bi-info-circle"></i>
+            <i-bs name="info-circle"></i-bs>
             <span class="d-none d-md-inline">INFO</span>
           </button>
           </td>
           <td>
             <button type="submit" [routerLink]="['/editMonumento', monumento._id, 'view']" *ngIf="admin" class="btn btn-primary btn-sm">
-              <i class="bi bi-pencil-fill"></i>
+              <i-bs name="pencil-fill"></i-bs>
               <span class="d-none d-md-inline">EDITAR</span>
             </button>
           </td>
           <td>
             <button type="submit" (click)="apagarMonumento(monumento._id)" *ngIf="admin" class="btn btn-danger btn-sm">
-              <i class="bi bi-trash-fill"></i>
+              <i-bs name="trash-fill"></i-bs>
               <span class="d-none d-md-inline">DELETE</span>
             </button>
           </td>

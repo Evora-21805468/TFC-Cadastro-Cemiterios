@@ -32,7 +32,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
 
-      console.log(this.width)
+
     if(this.width > 800 ){
       this.checkSize = true
     }else{

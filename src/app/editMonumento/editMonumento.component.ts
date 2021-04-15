@@ -19,6 +19,9 @@ import {Monumento} from "../consultarMonumentos/monumento";
 })
 export class EditMonumentoComponent implements OnInit {
 
+  width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+  checkSize = false;
+  size = "600px";
   token: String = "";
   monumento: Monumento = new Monumento("0", "0");
   id: number = 0;
@@ -103,6 +106,11 @@ export class EditMonumentoComponent implements OnInit {
   private unsubscribe: Subject<void> = new Subject<void>();
 
   async ngOnInit() {
+    if(this.width > 800 ){
+      this.size = "600px"
+    }else{
+      this.size = "200px"
+    }
     this.showPosition()
     this.spinner.show();
     // @ts-ignore

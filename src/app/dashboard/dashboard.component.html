@@ -1,3 +1,4 @@
 <div id="content" class="ui">
-  <iframe class="responsive-iframe"  src="https://ulht.maps.arcgis.com/apps/opsdashboard/index.html#/5dc782c99a0546b89d4ed36ca83d1fe3"></iframe>
+  <iframe class="responsive-iframe" *ngIf="checkSize" src="https://ulht.maps.arcgis.com/apps/opsdashboard/index.html#/5dc782c99a0546b89d4ed36ca83d1fe3"></iframe>
+  <iframe class="responsive-iframe" *ngIf="!checkSize" src="https://www.arcgis.com/apps/dashboards/b3b199f8e6d94445950f9fc39f91f110"></iframe>
 </div>

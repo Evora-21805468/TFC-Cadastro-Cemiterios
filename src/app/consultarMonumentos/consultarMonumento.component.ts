@@ -26,6 +26,10 @@ export class ConsultarMonumentoComponent implements OnInit {
    admin: boolean = false;
    monumentos: Monumento[] = [];
   searchTerms = "";
+  jazigoCapelaCheck = false;
+  jazigoSubterraneoCheck = false;
+  monumentoCheck = false;
+  sepulturaPerpetuaCheck = false;
 
     constructor(
       private formBuilder: FormBuilder,
@@ -321,29 +325,102 @@ export class ConsultarMonumentoComponent implements OnInit {
 
   searchCheck(monumento: Monumento): boolean {
     if (this.searchTerms === "") {
-      return true;
+      if(this.jazigoCapelaCheck || this.jazigoSubterraneoCheck || this.monumentoCheck || this.sepulturaPerpetuaCheck){
+        if(this.jazigoCapelaCheck && monumento._tipologia === "Jazigo Capela "){
+          return true
+        }
+        if(this.jazigoSubterraneoCheck && monumento._tipologia == "Jazigo subterrâneo "){
+          return true
+        }
+        if(this.monumentoCheck && monumento._tipologia == "Monumento "){
+          return true
+        }
+        if(this.sepulturaPerpetuaCheck && monumento._tipologia == "Sepultura Perpétua "){
+          return true
+        }
+        return false
+      }
+      return true
     }
+
+
     if(monumento._nomeMonumento!= null){
       if ( monumento._nomeMonumento.toLowerCase().includes(this.searchTerms.toLowerCase())  ) {
-        return true;
+        if(this.jazigoCapelaCheck || this.jazigoSubterraneoCheck || this.monumentoCheck || this.sepulturaPerpetuaCheck){
+          if(this.jazigoCapelaCheck && monumento._tipologia === "Jazigo Capela "){
+            return true
+          }
+          if(this.jazigoSubterraneoCheck && monumento._tipologia == "Jazigo subterrâneo "){
+            return true
+          }
+          if(this.monumentoCheck && monumento._tipologia == "Monumento "){
+            return true
+          }
+          if(this.sepulturaPerpetuaCheck && monumento._tipologia == "Sepultura Perpétua "){
+            return true
+          }
+          return false
+        }
       }
     }
 
     if(monumento._tipologia!= null){
       if ( monumento._tipologia.toLowerCase().includes(this.searchTerms.toLowerCase())  ) {
-        return true;
+        if(this.jazigoCapelaCheck || this.jazigoSubterraneoCheck || this.monumentoCheck || this.sepulturaPerpetuaCheck){
+          if(this.jazigoCapelaCheck && monumento._tipologia === "Jazigo Capela "){
+            return true
+          }
+          if(this.jazigoSubterraneoCheck && monumento._tipologia == "Jazigo subterrâneo "){
+            return true
+          }
+          if(this.monumentoCheck && monumento._tipologia == "Monumento "){
+            return true
+          }
+          if(this.sepulturaPerpetuaCheck && monumento._tipologia == "Sepultura Perpétua "){
+            return true
+          }
+          return false
+        }
       }
     }
 
     if(monumento._numeroRua!= null){
       if ( monumento._numeroRua.toString().toLowerCase().includes(this.searchTerms.toLowerCase())  ) {
-        return true;
+        if(this.jazigoCapelaCheck || this.jazigoSubterraneoCheck || this.monumentoCheck || this.sepulturaPerpetuaCheck){
+          if(this.jazigoCapelaCheck && monumento._tipologia === "Jazigo Capela "){
+            return true
+          }
+          if(this.jazigoSubterraneoCheck && monumento._tipologia == "Jazigo subterrâneo "){
+            return true
+          }
+          if(this.monumentoCheck && monumento._tipologia == "Monumento "){
+            return true
+          }
+          if(this.sepulturaPerpetuaCheck && monumento._tipologia == "Sepultura Perpétua "){
+            return true
+          }
+          return false
+        }
       }
     }
 
     if(monumento._arquiteto!= null){
       if ( monumento._arquiteto.toLowerCase().includes(this.searchTerms.toLowerCase())  ) {
-        return true;
+        if(this.jazigoCapelaCheck || this.jazigoSubterraneoCheck || this.monumentoCheck || this.sepulturaPerpetuaCheck){
+          if(this.jazigoCapelaCheck && monumento._tipologia === "Jazigo Capela "){
+            return true
+          }
+          if(this.jazigoSubterraneoCheck && monumento._tipologia == "Jazigo subterrâneo "){
+            return true
+          }
+          if(this.monumentoCheck && monumento._tipologia == "Monumento "){
+            return true
+          }
+          if(this.sepulturaPerpetuaCheck && monumento._tipologia == "Sepultura Perpétua "){
+            return true
+          }
+          return false
+        }
       }
     }
 

@@ -14,6 +14,16 @@
       <div class="card text-white bg-secondary" style="width: 25rem;" >
         <h3 class="card-title">Pesquisa</h3>
         <input #searchBox id="search-box" (input)="search(searchBox.value)" placeholder="Ex: Jazigo" />
+        <div class="settings">
+            <label for="jc">Jazigo Capela  </label>
+            <input id="jc" type="checkbox" [checked]="jazigoCapelaCheck" (change)="jazigoCapelaCheck = !jazigoCapelaCheck"   /><br>
+          <label for="js">Jazigo Subterrâneo  </label>
+          <input id="js" type="checkbox" [checked]="jazigoSubterraneoCheck" (change)="jazigoSubterraneoCheck = !jazigoSubterraneoCheck" /><br>
+          <label for="m">Monumento  </label>
+          <input id="m" type="checkbox" [checked]="monumentoCheck" (change)="monumentoCheck = !monumentoCheck" /> <br>
+          <label for="sp">Sepultura Perpétua  </label>
+          <input id="sp" type="checkbox" [checked]="sepulturaPerpetuaCheck" (change)="sepulturaPerpetuaCheck = !sepulturaPerpetuaCheck" /><br>
+        </div>
       </div>
       <table class="table table-striped" aria-describedby="page-heading">
         <thead>
@@ -34,19 +44,19 @@
             <div class="btn-group">
           <td>
           <button type="submit" [routerLink]="[monumento._id, 'view']" class="btn btn-info btn-sm">
-            <i class="fa fa-pencil"></i>
+            <i class="bi bi-info-circle"></i>
             <span class="d-none d-md-inline">INFO</span>
           </button>
           </td>
           <td>
             <button type="submit" [routerLink]="['/editMonumento', monumento._id, 'view']" *ngIf="admin" class="btn btn-primary btn-sm">
-              <i class="fa fa-pencil"></i>
+              <i class="bi bi-pencil-fill"></i>
               <span class="d-none d-md-inline">EDITAR</span>
             </button>
           </td>
           <td>
             <button type="submit" (click)="apagarMonumento(monumento._id)" *ngIf="admin" class="btn btn-danger btn-sm">
-              <i class="fa fa-pencil"></i>
+              <i class="bi bi-trash-fill"></i>
               <span class="d-none d-md-inline">DELETE</span>
             </button>
           </td>

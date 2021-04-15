@@ -18,7 +18,9 @@ import {switchMap, takeUntil} from "rxjs/operators";
 export class DashboardComponent implements OnInit {
 
 
-
+   width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+   src = "";
+   checkSize = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -30,7 +32,12 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
 
-
+      console.log(this.width)
+    if(this.width > 800 ){
+      this.checkSize = true
+    }else{
+      this.checkSize = false
+    }
   }
 
 

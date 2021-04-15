@@ -33,12 +33,12 @@ const routes: Routes = [
   },
   {
     path: '',
-    component: MainComponent,
+    component: MapComponent,
     canActivate: [AuthGuard]
   },
   {
     path: '/',
-    component: MainComponent,
+    component: MapComponent,
     canActivate: [AuthGuard]
   },
   {

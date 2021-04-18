@@ -361,6 +361,7 @@ export class ConsultarMonumentoComponent implements OnInit {
           }
           return false
         }
+        return true
       }
     }
 
@@ -381,7 +382,9 @@ export class ConsultarMonumentoComponent implements OnInit {
           }
           return false
         }
+        return true
       }
+
     }
 
     if(monumento._numeroRua!= null){
@@ -401,6 +404,7 @@ export class ConsultarMonumentoComponent implements OnInit {
           }
           return false
         }
+        return true
       }
     }
 /*

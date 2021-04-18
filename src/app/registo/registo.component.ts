@@ -59,7 +59,6 @@ export class RegistoComponent implements OnInit {
 
 
   registoStore() : void {
-
     if (this.user.email != null && this.user.password != null) {
       firebase.auth().createUserWithEmailAndPassword(this.user.email, this.user.password)
         .then((userThen) => {

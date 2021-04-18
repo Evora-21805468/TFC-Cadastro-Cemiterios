@@ -66,7 +66,6 @@ export class AuthService {
           let bool: boolean = doc.data().isAdmin
           this.ls.setGlobalVar(bool)
         } else {
-          // doc.data() will be undefined in this case
           console.log("No such document!");
         }
       })

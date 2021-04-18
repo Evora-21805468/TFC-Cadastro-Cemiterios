@@ -31,8 +31,6 @@ export class DashboardComponent implements OnInit {
   private unsubscribe: Subject<void> = new Subject<void>();
 
   ngOnInit(): void {
-
-
     if(this.width > 800 ){
       this.checkSize = true
     }else{

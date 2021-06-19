@@ -403,7 +403,7 @@ export class DetailConsultarMonumentoComponent implements OnInit {
     number +=30
     pdf.text("Leitura Simbólica: " +  this.monumento._leitura_simbolica, 35, number);
     number +=30
-    pdf.text("Outros Elementos Escritos: " +  this.monumento._outros_elementos_descritivos, 35, number);
+    pdf.text("Outros Elementos Escritos: " +  this.monumento._outros_elementos_escritos, 35, number);
     number +=30
     pdf.setFontSize(21);
     pdf.text("Biografias" , 35, number);

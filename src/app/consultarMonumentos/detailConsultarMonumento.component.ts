@@ -11,6 +11,7 @@ import {combineAll} from "rxjs/operators";
 import {IUserDB} from "../consultarUsers/userDB";
 import { Monumento} from "./monumento";
 import {NgxSpinnerService} from "ngx-spinner";
+import jsPDF from 'jspdf';
 
 
 @Component({
@@ -25,6 +26,8 @@ export class DetailConsultarMonumentoComponent implements OnInit {
    id: number = 0;
    list:Array<string> = [];
    link: string = "https://www.google.com/maps/search/?api=1&query="
+
+
 
     constructor(
       private formBuilder: FormBuilder,
@@ -365,6 +368,72 @@ export class DetailConsultarMonumentoComponent implements OnInit {
     let url = 'https://services-eu1.arcgis.com/kJpwBKPhHXDuJncY/arcgis/rest/services/survey123_1278669bc6f64f089d84969cb31c3aa7/FeatureServer/survey/' + num;
     let response: Promise<Object> = this.http.post(url, body).toPromise();
     return response;
+  }
+
+  getPdf(){
+      let pdf = new jsPDF('p','pt','a4')
+    pdf.setFontSize(9);
+      pdf.text("Informações Criadas Por: https://cemiteriodosprazeres.site/", 20, 25);
+    pdf.setFontSize(21);
+    let number = 50
+    pdf.text("Informações Do Monumento", 35, number);
+    number +=30
+    pdf.setFontSize(12);
+    pdf.text("Número do Monumento: " +  this.monumento._nomeMonumento, 35, number);
+    number +=30
+    pdf.text("Rua: " +  this.monumento._rua, 35, number);
+    number +=30
+    pdf.text("Número da Rua: " +  this.monumento._numeroRua, 35, number);
+    number +=30
+    pdf.text("Tipologia: " +  this.monumento._tipologia, 35, number);
+    number +=30
+    pdf.text("Arquiteto: " +  this.monumento._arquiteto, 35, number);
+    number +=30
+    pdf.text("Construtor: " +  this.monumento._construtor, 35, number);
+    number +=30
+    pdf.text("Quem Mandou Construir: " +  this.monumento._quemMandouConstruir, 35, number);
+    number +=30
+    pdf.text("Epitáfios: " +  this.monumento._epitafios, 35, number);
+    number +=30
+    pdf.text("Beneméritos e Mecenas: " +  this.monumento._benemeritos_e_mecenas, 35, number);
+    number +=30
+    pdf.text("Outros Elementos Escritos: " +  this.monumento._outros_elementos_descritivos, 35, number);
+    number +=30
+    pdf.text("Confrontação: " +  this.monumento._confrontacao, 35, number);
+    number +=30
+    pdf.text("Leitura Simbólica: " +  this.monumento._leitura_simbolica, 35, number);
+    number +=30
+    pdf.text("Outros Elementos Escritos: " +  this.monumento._outros_elementos_descritivos, 35, number);
+    number +=30
+    pdf.setFontSize(21);
+    pdf.text("Biografias" , 35, number);
+    pdf.setFontSize(12);
+    number +=30
+    pdf.text("Biografia 1ª Personalidade no Jazigo: " +  this.monumento._biografia_1, 35, number);
+    number +=30
+    pdf.text("Biografia 2ª Personalidade no Jazigo: " +  this.monumento._biografia_2, 35, number);
+    number +=30
+    pdf.text("Biografia 3ª Personalidade no Jazigo: " +  this.monumento._biografia_3, 35, number);
+    number +=30
+    pdf.text("Biografia 4ª Personalidade no Jazigo: " +  this.monumento._biografia_4, 35, number);
+    number +=30
+    pdf.text("Biografia 5ª Personalidade no Jazigo: " +  this.monumento._biografia_5, 35, number);
+    number +=30
+    pdf.setFontSize(21);
+    pdf.text("Arquivo" , 35, number);
+    pdf.setFontSize(12);
+    number +=30
+    pdf.text("Nº do Processo: " +  this.monumento._n_do_processo, 35, number);
+    number +=30
+    pdf.text("Alterações, obras e manutenção: " +  this.monumento._alteracoes_obras_e_manutencao, 35, number);
+    number +=30
+    pdf.text("Mudança de Posse: " +  this.monumento._mudancaPosse, 35, number);
+    number +=30
+    pdf.text("Outros Elementos Descritivos: " +  this.monumento._outros_elementos_descritivos, 35, number);
+    number +=30
+    pdf.text("Sepultados: " +  this.monumento._sepultados, 35, number);
+    let name = "MONUMENTO" + this.id
+     pdf.save(name)
   }
 
 
